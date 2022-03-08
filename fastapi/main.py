@@ -30,3 +30,26 @@ def get_model(model_name: ModelName):
 @app.get("/query")
 def get_query(q: int):
     return int
+
+
+favicon_path = 'favicon.ico'
+from starlette.responses import FileResponse
+
+
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse(favicon_path)
+
+
+from pydantic import BaseModel
+
+
+class MagnusClass(BaseModel):
+    age: int
+    name: str
+    type: str = "unknown"
+
+
+@app.post("/model")
+def get_model_v2(query: MagnusClass):
+    return {"query": query}
