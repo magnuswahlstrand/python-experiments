@@ -21,4 +21,4 @@ db*
 __pycache__
 .env
 
-.pem
+*.pem
